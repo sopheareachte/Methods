@@ -12,66 +12,62 @@
 import java.util.Scanner;
 
 public class Means {
-	
 	//Calculate arithmetic mean of three numbers
-	public static double arithmeticMean(double firstNumber, 
-		double secondNumber, double thirdNumber) {
+	public static double getArithmeticMean(double num1, double num2, 
+											double num3) {
 
-		return (firstNumber + secondNumber + thirdNumber) / 3;
+		return (num1 + num2 + num3) / 3;
 	}
 	
 	//Calculate geometric mean of three numbers
-	public static double geometricMean(double firstNumber, 
-		double secondNumber, double thirdNumber) {
+	public static double getGeometricMean(double num1, double num2, 
+											double num3) {
 			
-		return Math.pow(firstNumber * secondNumber * thirdNumber, 
-			1.0 / 3.0);
+		return Math.pow(num1 * num2 * num3, 1.0 / 3.0);
 	}
 	
 	//Calculate the reciprocal of a number
-	public static double reciprocal(double x) {
+	public static double getReciprocal(double x) {
 		return 1.0 / x;
 	}
 	
 	//Calculate harmonic mean of three numbers
-	public static double harmonicMean(double firstNumber, 
-		double secondNumber, double thirdNumber) {
+	public static double getHarmonicMean(double num1, double num2, 
+										double num3) {
 			
-		double firstReciprocal = reciprocal(firstNumber);
-		double secondReciprocal = reciprocal(secondNumber);
-		double thirdReciprocal = reciprocal(thirdNumber);
+		double reciprocal1 = getReciprocal(num1);
+		double reciprocal2 = getReciprocal(num2);
+		double reciprocal3 = getReciprocal(num3);
 		
-		double arithmeticMeans = arithmeticMean(firstReciprocal,
-								secondReciprocal, thirdReciprocal);
+		double arithmeticMean = getArithmeticMean(reciprocal1,
+								reciprocal2, reciprocal3);
 		 		
-		return reciprocal(arithmeticMeans);
+		return getReciprocal(arithmeticMean);
 	}
 	
 	public static void main (String[] args) {
-		
 		//prompt user for three numbers for calculations
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter first number: ");
-		double firstNumber = input.nextDouble();
+		double num1 = input.nextDouble();
 		System.out.print("Enter second number: ");
-		double secondNumber = input.nextDouble();
+		double num2 = input.nextDouble();
 		System.out.print("Enter third number: ");
-		double thirdNumber = input.nextDouble();
+		double num3 = input.nextDouble();
 		
 		//call arithmeticMean to do calculation and print it
 		System.out.printf("Arithmetic mean: %.2f%n", 
-				arithmeticMean(firstNumber, secondNumber, thirdNumber));
+				getArithmeticMean(num1, num2, num3));
 				
 		//call geometricMean to do calculation and print it		
 		System.out.printf("Geometric mean:  %.2f%n", 
-				geometricMean(firstNumber, secondNumber, thirdNumber));
+				getGeometricMean(num1, num2, num3));
 				
 		//call harmonicMean to do calculation and print it
 		System.out.printf("Harmonic mean:   %.2f%n", 
-				harmonicMean(firstNumber, secondNumber, thirdNumber));
-		
+				getHarmonicMean(num1, num2, num3));
+
+		input.close();
 	}
-	
-	
 }
 
